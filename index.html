@@ -1,0 +1,62 @@
+<!-- style.css
+     Made by Thomas Simon
+     Spring 2020
+-->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Joe's Hot Dog Stand</title>
+<link rel = "stylesheet" type = "text/css" href = "reset.css" />
+<link rel = "stylesheet" type = "text/css" href = "style.css" />
+<style>
+  body {font-family: "Helvetica";}
+  h1 {background: #ff9900;
+      text-align:center;
+      padding:10px;
+      font-style:italic;}
+  .container {  border-style: solid;
+                border-width: 5px;
+                margin-left:10%;
+                margin-right:10%;
+                border-color:black;
+                padding:2%;
+                text-align:center;}
+</style>
+</head>
+
+<body>
+	<h1>Joe's Hot Dog Stand</h1>
+  <div class="container">
+  <p>How many Hot Dogs? <input type="number" id="dogs" value="1"></p>
+  <p>How many French Fries? <input type="number" id="fries" value="1"></p>
+  <p>How many Drinks? <input type="number" id="drinks" value="1"></p>
+  <button onclick="totalOrder()">Calculate Total</button>
+  </div>
+	<script language="javascript">
+  function totalOrder(){
+    var dogs = parseInt(document.getElementById("dogs").value);
+    var fries = document.getElementById("fries").value;
+    var drinks = document.getElementById("drinks").value;
+    var total = parseFloat(dogs)*3.25 + parseFloat(fries)*2.00 + parseFloat(drinks)*1.50;
+    var discount = 0;
+    var tax = 0;
+    if (total >= 20.00){
+      discount = (total*.1);
+      total = total - discount;
+    }
+    tax = (total*.0625);
+    total = total + tax;
+    if ( isNaN(total) || total <= 0 || dogs < 0 || drinks < 0 || fries < 0){
+      alert("Invalid input in one or more fields. Please input positive numbers.");
+    } else {
+
+	    document.getElementById("result").innerHTML = "Reciept: <br>" + dogs + " Hot Dog(s) <br>" + fries + " French Fries <br>" + drinks + " drink(s) <br>-$" + discount.toFixed(2) + " off w/ discount <br>$" + tax.toFixed(2) + " in tax <br>Total: $" + total.toFixed(2);
+    }
+  }
+	</script>
+  <br>
+  <br>
+  <div class="container" id="result">Reciept:<br></div>
+</body>
+</html>
