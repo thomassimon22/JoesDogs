@@ -35,6 +35,7 @@
   </div>
 	<script language="javascript">
   function totalOrder(){
+    var e = document.getElementById("result");
     var dogs = parseInt(document.getElementById("dogs").value);
     var fries = document.getElementById("fries").value;
     var drinks = document.getElementById("drinks").value;
@@ -50,13 +51,13 @@
     if ( isNaN(total) || total <= 0 || dogs < 0 || drinks < 0 || fries < 0){
       alert("Invalid input in one or more fields. Please input positive numbers.");
     } else {
-
-	    document.getElementById("result").innerHTML = "Reciept: <br>" + dogs + " Hot Dog(s) <br>" + fries + " French Fries <br>" + drinks + " drink(s) <br>-$" + discount.toFixed(2) + " off w/ discount <br>$" + tax.toFixed(2) + " in tax <br>Total: $" + total.toFixed(2);
+	    document.getElementById("result").innerHTML = "Receipt: <br>" + dogs + " Hot Dog(s) <br>" + fries + " French Fries <br>" + drinks + " drink(s) <br>-$" + discount.toFixed(2) + " off w/ discount <br>$" + tax.toFixed(2) + " in tax <br>Total: $" + total.toFixed(2);
+      document.getElementById("result").style.opacity = "1";
     }
   }
 	</script>
   <br>
   <br>
-  <div class="container" id="result">Reciept:<br></div>
+  <div class="container" style="opacity:0;"id="result">Reciept:<br></div>
 </body>
 </html>
